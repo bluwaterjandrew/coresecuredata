@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SecureDataApp.Models;
 
 namespace SecureDataApp.Data
 {
@@ -12,5 +13,6 @@ namespace SecureDataApp.Data
             : base(options)
         {
         }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }
