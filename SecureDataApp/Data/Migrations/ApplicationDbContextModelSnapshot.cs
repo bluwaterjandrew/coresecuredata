@@ -200,6 +200,8 @@ namespace SecureDataApp.Data.Migrations
 
                     b.Property<string>("Phone");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("ContactId");
 
                     b.ToTable("Contacts");

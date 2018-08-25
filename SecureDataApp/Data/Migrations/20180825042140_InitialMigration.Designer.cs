@@ -10,8 +10,8 @@ using SecureDataApp.Data;
 namespace SecureDataApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180824013501_Initial")]
-    partial class Initial
+    [Migration("20180825042140_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -202,7 +202,11 @@ namespace SecureDataApp.Data.Migrations
 
                     b.Property<string>("Phone");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("ContactId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Contacts");
                 });
@@ -250,6 +254,13 @@ namespace SecureDataApp.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SecureDataApp.Models.Contact", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }
